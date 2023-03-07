@@ -78,7 +78,6 @@ export default defineComponent({
     });
 
     async function fetchNextPage() {
-      console.log(nextCursor.value)
       const fetchPageParams = [
         props,
         refetch,

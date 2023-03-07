@@ -71,7 +71,9 @@
           />
         </div>
       </div>
-      <p v-if="loading" class="loading">Loading...</p>
+      <div v-if="loading">
+        <p class="loading">Loading...</p>
+      </div>
       <p v-else-if="error" class="error">{{ error.message }}</p>
       <TransactionList v-else
                        :has-page="hasNextPage"
@@ -183,11 +185,8 @@ export default defineComponent({
     }
 
     function onSelectData(data) {
-      transactions.value = data.transactions.value;
-      loading.value = data.loading.value;
-      error.value = data.error.value;
-      fetchNextPage.value = data.fetchNextPage;
-      hasNextPage.value = data.hasNextPage.value;
+      updateData(data);
+
       searchData.value = null;
 
       if (data.selectedOption?.value?.bank) {
@@ -243,9 +242,10 @@ export default defineComponent({
 }
 
 .loading {
+  width: 150px;
+  text-align: start;
   color: var(--default-color);
   font-weight: bold;
-  text-align: center;
 }
 
 .error {

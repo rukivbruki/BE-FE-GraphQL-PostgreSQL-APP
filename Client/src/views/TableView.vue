@@ -1,93 +1,93 @@
 <template>
   <div class="container">
-    <p v-if="loading" class="loading">Loading...</p>
-    <p v-else-if="error" class="error">{{ error.message }}</p>
-    <div v-else class="filter-container">
+    <div class="filter-container">
       <div class="value-search-wrapper">
         <div class="search-container">
           <label for="search" class="search-label">Search transaction:</label>
           <searchBar
-            id="search"
-            class="search-component"
-            :search-data="searchData"
-            :reset-config="resetConfigProp"
-            @searchData="onSearchData"
-            @fetchMoreSearchData="onFetchMoreSearchData"
+              id="search"
+              class="search-component"
+              :search-data="searchData"
+              :reset-config="resetConfigProp"
+              @searchData="onSearchData"
+              @fetchMoreSearchData="onFetchMoreSearchData"
           />
         </div>
         <div class="select-container">
           <label for="bank-select" class="select-label">Bank:</label>
           <SelectBar
-            id="bank-select"
-            class="select-component"
-            :select-options="bankOptions"
-            :bank-option="bankPropOption"
-            :account-option="accountPropOption"
-            :start-date="startDateProp"
-            :end-date="endDateProp"
-            :reset-config="resetConfigProp"
-            @selectData="onSelectData"
-            @fetchMoreSelectData="onFetchMoreSelectData"
+              id="bank-select"
+              class="select-component"
+              :select-options="bankOptions"
+              :bank-option="bankPropOption"
+              :account-option="accountPropOption"
+              :start-date="startDateProp"
+              :end-date="endDateProp"
+              :reset-config="resetConfigProp"
+              @selectData="onSelectData"
+              @fetchMoreSelectData="onFetchMoreSelectData"
           />
         </div>
         <div class="select-container">
           <label for="account-select" class="select-label">Account:</label>
           <SelectBar
-            id="account-select"
-            class="select-component"
-            :select-options="accountOptions"
-            :bank-option="bankPropOption"
-            :account-option="accountPropOption"
-            :start-date="startDateProp"
-            :end-date="endDateProp"
-            :reset-config="resetConfigProp"
-            @selectData="onSelectData"
-            @fetchMoreSelectData="onFetchMoreSelectData"
+              id="account-select"
+              class="select-component"
+              :select-options="accountOptions"
+              :bank-option="bankPropOption"
+              :account-option="accountPropOption"
+              :start-date="startDateProp"
+              :end-date="endDateProp"
+              :reset-config="resetConfigProp"
+              @selectData="onSelectData"
+              @fetchMoreSelectData="onFetchMoreSelectData"
           />
         </div>
       </div>
       <div class="date-search-wrapper">
         <div class="date-container">
           <DateBar
-            class=""
-            :label="'Start date:'"
-            :start-date="startDateProp"
-            :end-date="endDateProp"
-            :bank-option="bankPropOption"
-            :account-option="accountPropOption"
-            :reset-config="resetConfigProp"
-            @dateData="(data) => onDateData(data, 'startDate')"
-            @fetchMoreDateData="onFetchMoreDateData"
+              class=""
+              :label="'Start date:'"
+              :start-date="startDateProp"
+              :end-date="endDateProp"
+              :bank-option="bankPropOption"
+              :account-option="accountPropOption"
+              :reset-config="resetConfigProp"
+              @dateData="(data) => onDateData(data, 'startDate')"
+              @fetchMoreDateData="onFetchMoreDateData"
           />
         </div>
         <div class="date-container">
           <DateBar
-            :label="'End date:'"
-            :start-date="startDateProp"
-            :end-date="endDateProp"
-            :bank-option="bankPropOption"
-            :account-option="accountPropOption"
-            :reset-config="resetConfigProp"
-            @dateData="(data) => onDateData(data, 'endDate')"
-            @fetchMoreDateData="onFetchMoreDateData"
+              :label="'End date:'"
+              :start-date="startDateProp"
+              :end-date="endDateProp"
+              :bank-option="bankPropOption"
+              :account-option="accountPropOption"
+              :reset-config="resetConfigProp"
+              @dateData="(data) => onDateData(data, 'endDate')"
+              @fetchMoreDateData="onFetchMoreDateData"
           />
         </div>
       </div>
-      <TransactionList
-        :has-page="hasNextPage"
-        :transactions-list="transactions"
-        :fetch-page="fetchNextPage"
+      <p v-if="loading" class="loading">Loading...</p>
+      <p v-else-if="error" class="error">{{ error.message }}</p>
+      <TransactionList v-else
+                       :has-page="hasNextPage"
+                       :transactions-list="transactions"
+                       :fetch-page="fetchNextPage"
       />
     </div>
   </div>
 </template>
 <script>
-import { computed, defineComponent, reactive, ref } from 'vue';
+import {computed, defineComponent, reactive, ref} from 'vue';
 import SelectBar from '../components/SelectBar.vue';
 import SearchBar from '@/components/SearchBar.vue';
 import TransactionList from '@/components/TransactionList.vue';
 import DateBar from '@/components/DateBar.vue';
-import { accountOptions, bankOptions } from '@/utils';
+import {accountOptions, bankOptions} from '@/utils';
 import '../common-styles.css';
 
 export default defineComponent({

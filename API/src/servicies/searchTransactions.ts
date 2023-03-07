@@ -64,7 +64,7 @@ export async function searchTransactions(
         account: true,
       },
       orderBy: {
-        date: 'desc',
+        id: 'desc',
       },
       take: limit,
     });

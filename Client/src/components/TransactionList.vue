@@ -1,6 +1,6 @@
 <template>
   <div class="transaction-container">
-    <div class="transaction-list" v-if="transactionsList.length">
+    <div class="transaction-list" data-testid="transaction-list" v-if="transactionsList.length">
       <div class="row header">
         <div class="cell">Date</div>
         <div class="cell">Amount</div>

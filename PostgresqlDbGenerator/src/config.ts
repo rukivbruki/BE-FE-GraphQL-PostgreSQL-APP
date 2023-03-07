@@ -11,6 +11,6 @@ export const config = {
   csv: {
     accounts: "./data/accounts.csv",
     categories: "./data/categories.csv",
-    transactions: "./data/test.csv",
+    transactions: "./data/transactions.csv",
   },
 };

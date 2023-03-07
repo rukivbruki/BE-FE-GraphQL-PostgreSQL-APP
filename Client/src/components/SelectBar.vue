@@ -7,10 +7,10 @@
 </template>
 
 <script>
-import { defineComponent, ref, watch } from 'vue';
-import { useQuery } from '@vue/apollo-composable';
-import { GET_TRANSACTIONS_BY_FILTER } from '@/graphql/queries';
-import { fetchByFilter, fetchPage } from '../utils';
+import {defineComponent, ref, watch} from 'vue';
+import {useQuery} from '@vue/apollo-composable';
+import {GET_TRANSACTIONS_BY_FILTER} from '@/graphql/queries';
+import {fetchByFilter, fetchPage} from '@/utils';
 
 export default defineComponent({
   props: {
@@ -35,14 +35,14 @@ export default defineComponent({
     },
   },
 
-  setup(props, { emit }) {
+  setup(props, {emit}) {
     const limit = ref(4);
     const transactions = ref([]);
     const hasNextPage = ref(true);
     const nextCursor = ref('');
     const selectedOption = ref(props.selectOptions[0]);
 
-    const { loading, error, refetch } = useQuery(GET_TRANSACTIONS_BY_FILTER, {
+    const {loading, error, refetch} = useQuery(GET_TRANSACTIONS_BY_FILTER, {
       limit: limit.value,
       cursor: null,
       bank: 'All results',
@@ -53,11 +53,10 @@ export default defineComponent({
 
     watch(props.resetConfig, () => {
       props.resetConfig.isFilter &&
-        (selectedOption.value = props.selectOptions[0]);
+      (selectedOption.value = props.selectOptions[0]);
     });
 
     watch([() => props.bankOption, () => props.accountOption], async () => {
-      console.log(props.resetConfig);
 
       const fetchByFilterParams = [
         props,
@@ -79,6 +78,7 @@ export default defineComponent({
     });
 
     async function fetchNextPage() {
+      console.log(nextCursor.value)
       const fetchPageParams = [
         props,
         refetch,

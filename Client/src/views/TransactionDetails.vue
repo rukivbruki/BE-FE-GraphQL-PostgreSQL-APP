@@ -6,17 +6,17 @@
       <h2>Transaction Detail</h2>
       <div class="transaction-info">
         <div class="transaction-property">
-          <strong>Date:</strong> {{ transaction.date.slice(0, 10) }}
+          <strong>Date:</strong> {{ transaction?.date.slice(0, 10) }}
         </div>
         <div class="transaction-property">
-          <strong>Amount:</strong> {{ transaction.amount }}
-          {{ transaction.currency }}
+          <strong>Amount:</strong> {{ transaction?.amount }}
+          {{ transaction?.currency }}
         </div>
         <div class="transaction-property">
-          <strong>Reference:</strong> {{ transaction.reference }}
+          <strong>Reference:</strong> {{ transaction?.reference }}
         </div>
         <div class="transaction-property">
-          <strong>Category:</strong> {{ transaction.category.name }}
+          <strong>Category:</strong> {{ transaction?.category.name }}
         </div>
       </div>
       <router-link to="/" class="back-link"

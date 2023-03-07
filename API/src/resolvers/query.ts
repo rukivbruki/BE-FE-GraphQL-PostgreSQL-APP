@@ -1,9 +1,5 @@
-import {
-  getTransactionById,
-  getTransactionsByFilter,
-  searchTransactions,
-} from '../servicies';
-import { format } from 'date-fns';
+import {getTransactionById, getTransactionsByFilter, searchTransactions,} from '../servicies';
+import {format} from 'date-fns';
 import {
   Context,
   GetTransactionByIdArgs,
@@ -12,7 +8,6 @@ import {
   Transaction,
   TransactionsResult,
 } from '../types';
-import { Account, Category } from '@prisma/client';
 
 export const Query = {
   async getTransactionById(
@@ -24,13 +19,10 @@ export const Query = {
     if (!transaction) {
       return null;
     }
-    const formattedTransaction = {
+    return {
       ...transaction,
       date: format(new Date(transaction.date), 'yyyy-MM-dd HH:mm:ss.SSS'),
     };
-
-    console.log(formattedTransaction);
-    return formattedTransaction;
   },
   async getTransactionsByFilter(
     parent: unknown,

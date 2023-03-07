@@ -23,11 +23,13 @@ const server = new ApolloServer({
 async function startServer() {
   await server.start();
   server.applyMiddleware({ app });
-  app.listen({ port: 4001 }, () =>
+  app.listen({ port: 4001 }, async () => {
     console.log(
-      `🚀 Server ready at http://localhost:4001${server.graphqlPath}`,
-    ),
-  );
+        `🚀 Server ready at http://localhost:4001${server.graphqlPath}`,
+    );
+    await prisma.$executeRaw`ANALYZE;`;
+    console.log('Database analyzed.');
+  });
 }
 
 startServer();

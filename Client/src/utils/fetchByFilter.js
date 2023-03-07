@@ -4,8 +4,6 @@ export async function fetchByFilter(fetchByFilterParams) {
   const [props, refetch, nextCursor, transactions, hasNextPage] =
     fetchByFilterParams;
 
-  console.log(props.startDate, props.endDate);
-
   const refetchData = await refetch({
     cursor: null,
     bank: props.bankOption === 'All banks' ? null : props.bankOption,

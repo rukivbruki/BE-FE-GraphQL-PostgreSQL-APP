@@ -14,6 +14,9 @@ model Account {
   name         String
   bank         String
   transactions Transaction[]
+
+  @@index([bank], name: "account_bank_idx")
+  @@index([name], name: "account_name_idx")
 }
 
 model Category {
@@ -33,4 +36,6 @@ model Transaction {
   date       DateTime
   account    Account  @relation(fields: [accountId], references: [id])
   category   Category @relation(fields: [categoryId], references: [id])
+
+  @@index([date], name: "transaction_date_idx")
 }

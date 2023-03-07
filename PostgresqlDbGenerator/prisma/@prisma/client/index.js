@@ -174,7 +174,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Users\\09944\\Desktop\\MAIN_FOLDER\\MyJob\\Тестовые проекты\\Friday_Finance_test assignment\\PostgreSQL\\prisma\\@prisma\\client",
+      "value": "C:\\Users\\09944\\Desktop\\MAIN_FOLDER\\MyJob\\Тестовые проекты\\BE-FE-GraphQL-PostgreSQL-APP\\PostgresqlDbGenerator\\prisma\\@prisma\\client",
       "fromEnvVar": null
     },
     "config": {
